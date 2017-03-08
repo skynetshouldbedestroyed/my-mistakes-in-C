@@ -1,0 +1,20 @@
+#include"stdio.h"
+
+int * max(int,int);
+
+int main()
+{
+int x,y;
+
+scanf("%d%d",&x,&y);
+printf("%d",max(x,y));
+return 0;
+}
+
+int * max(int x,int y)
+{
+if(x>y)
+return &x;                        //there is something wrong, in max(), x and y are formal arguments, when the function has been called, 
+else                              //the in-memory will be free, so there is no address which will be returned.
+return &y;
+}
