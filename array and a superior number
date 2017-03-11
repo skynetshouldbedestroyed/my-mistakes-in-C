@@ -1,0 +1,37 @@
+//There is a mathematical question: calculate 2^100
+//there is no date type can memory this number, so you can use array
+
+#include"stdio.h"
+
+int main()
+{
+int n;
+int array[1000]={0};
+int index,i;
+int num;
+
+array[0]=2;
+scanf("%d",&n);
+for(i=1;i<=n-1;i++)
+{
+for(index=0;index<=999;index++)         //the idea is that 2^100 is actually a multiplication
+{                                       //the 13*2's nature is that 10*2+3*2
+array[index]*=2;                        //the 68*2's nature is that 60*2+8*2 
+}                                       //in array, you can ignore every number'digit, so these calculation can be expressed in that form
+for(index=0;index<=999;index++)         // 1*2+3*2      6*2+8*2
+if(array[index]>9)
+{
+array[index]-=10;
+array[index+1]+=1;
+}
+}
+for(i=999;i>-1;i--)
+if(array[i]!=0)
+{
+num=i;
+break;
+}
+for(i=num;i>=0;i--)
+printf("%d",array[i]);
+return 0;
+}
