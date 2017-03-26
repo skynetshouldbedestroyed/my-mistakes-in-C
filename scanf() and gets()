@@ -1,0 +1,35 @@
+#include"stdio.h"
+#include"string.h"
+
+void main(void)
+{
+
+char word[200];
+while(gets(word)!=NULL);
+{//scanf("%s",word);                          //scanf() input char string is not convenient due to scanf() read ' ' will return.  
+
+int array[100]={0};
+int bigest_length=0,bigest_index;
+array[0]=-1;
+int x=1;
+for(int i=1;i<strlen(word)+1;i++)
+{
+if(word[i]==' '||word[i]==','||word[i]=='.'||word[i]=='\0')
+{
+array[x++]=i;
+}
+}
+for(x=0;array[x]!=0;x++)
+bigest_length=bigest_length>(array[x+1]-array[x]-1)?bigest_length:(array[x+1]-array[x]-1);
+for(x=0;array[x]!=0;x++)
+{
+if(array[x+1]-array[x]-1==bigest_length)
+bigest_index=array[x]+1;
+else
+continue;
+}
+for(int d=bigest_index;d<bigest_index+bigest_length;d++)
+printf("%c",word[d]);
+printf("\n");
+}
+}
