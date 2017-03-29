@@ -1,0 +1,18 @@
+typedef struct
+{
+int ID;
+char name[10];
+char sex;
+Student * next;
+}Student;
+
+//this is wrong, when reading the 6th row, the system can't recognize "Student".
+//this way will be accepted
+
+typedef struct stu
+{
+int ID;
+char name[10];
+char sex;
+struct stu * next;
+}Student;
